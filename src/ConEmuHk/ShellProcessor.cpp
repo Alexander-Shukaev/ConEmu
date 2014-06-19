@@ -33,7 +33,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #pragma warning(disable: 4091)
 #include <Shlobj.h>
 #pragma warning(default: 4091)
+
+#if !defined(__MINGW32__)
 #include "../ConEmu/ShObjIdl_Part.h"
+#endif
+
 #include "../common/common.hpp"
 #include "../common/ConEmuCheck.h"
 #include "SetHook.h"

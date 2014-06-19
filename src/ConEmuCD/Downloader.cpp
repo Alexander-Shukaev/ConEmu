@@ -33,7 +33,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "../common/MAssert.h"
 #include "Downloader.h"
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__MINGW32__)
 typedef struct {
     DWORD dwMajorVersion;
     DWORD dwMinorVersion;

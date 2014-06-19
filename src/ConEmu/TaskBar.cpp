@@ -33,7 +33,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Options.h"
 
 // COM TaskBarList interface support
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__MINGW32__)
 #include "ShObjIdl_Part.h"
 const CLSID CLSID_TaskbarList = {0x56FDF344, 0xFD6D, 0x11d0, {0x95, 0x8A, 0x00, 0x60, 0x97, 0xC9, 0xA0, 0x90}};
 const IID IID_ITaskbarList4 = {0xc43dc798, 0x95d1, 0x4bea, {0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a}};
@@ -43,6 +43,10 @@ const IID IID_ITaskbarList  = {0x56FDF342, 0xFD6D, 0x11d0, {0x95, 0x8A, 0x00, 0x
 #define IDI_SHIELD 32518
 #else
 #include <ShObjIdl.h>
+#endif
+
+#if defined(__MINGW32__)
+#define IDI_SHIELD 32518
 #endif
 //#else
 //#include <ShObjIdl.h>

@@ -3436,7 +3436,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	gnOsVer = ((gOSVer.dwMajorVersion & 0xFF) << 8) | (gOSVer.dwMinorVersion & 0xFF);
 	HeapInitialize();
 	RemoveOldComSpecC();
-	AssertMsgBox = MsgBox;
+
+	#if !defined(__MINGW32__)
+		AssertMsgBox = MsgBox;
+	#endif
 
 	/* *** DEBUG PURPOSES */
 	gpStartEnv = LoadStartupEnv();
