@@ -48,7 +48,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define LODWORD(ull) ((DWORD)((ULONGLONG)(ull) & 0x00000000ffffffff))
 #define HIDWORD(ull) ((DWORD)(ull>>32))
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__MINGW32__)
 	/*
 	 * Gesture flags - GESTUREINFO.dwFlags
 	 */
