@@ -679,7 +679,7 @@ extern BOOL gbInRecreateRoot;
 #include "ExitCodes.h"
 
 
-#ifndef __GNUC__
+#if !defined (__GNUC__) || defined(__MINGW32__)
 #include <intrin.h>
 #else
 #define _InterlockedIncrement InterlockedIncrement

@@ -46,7 +46,10 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "RealConsole.h"
 #include "TabBar.h"
 
-#ifdef __GNUC__
+#define LODWORD(ull) ((DWORD)((ULONGLONG)(ull) & 0x00000000ffffffff))
+#define HIDWORD(ull) ((DWORD)(ull>>32))
+
+#if defined(__GNUC__) && !defined(__MINGW32__)
 	/*
 	 * Gesture flags - GESTUREINFO.dwFlags
 	 */

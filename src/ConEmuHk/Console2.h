@@ -74,7 +74,7 @@ int InjectHookDLL(PROCESS_INFORMATION pi, InjectHookFunctions* pfn /*UINT_PTR fn
 	}
 
 	//UINT_PTR fnGetDllByName = 0;
-	DWORD_PTR nLoadLibraryProcShift = 0;
+	DWORD_PTR nLoadLibraryProcShift;
 	//HMODULE hNtDll, hKernel;
 	//if (nOsVer >= 0x0602)
 	if (pfn->fnLdrGetDllHandleByName)

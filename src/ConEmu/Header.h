@@ -52,11 +52,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "../common/Memory.h"
 #include "../common/MAssert.h"
 
-#ifdef __GNUC__
-#define wmemmove_s(d,ds,s,ss) wmemmove(d,s,ss)
-#define SecureZeroMemory(p,s) memset(p,0,s)
-#endif
-
 #ifndef TimeGetTime
 	#ifdef __GNUC__
 		#define TimeGetTime GetTickCount
@@ -793,3 +788,10 @@ bool isMainThread();
 #define UM_SEARCH_FOCUS     (WM_APP+36)
 #define UM_EDIT_KILL_FOCUS  (WM_APP+37)
 #define UM_PALETTE_FAST_CHG (WM_APP+38)
+
+#ifdef __GNUC__
+#define wmemmove_s(d,ds,s,ss) wmemmove(d,s,ss)
+#ifndef __MINGW32__
+#define SecureZeroMemory(p,s) memset(p,0,s)
+#endif
+#endif

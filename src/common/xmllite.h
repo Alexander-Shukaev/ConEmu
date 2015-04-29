@@ -1271,7 +1271,7 @@ EXTERN_C const IID IID_IXmlWriter;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IID helpers
-#ifndef __GNUC__
+#if !defined(__GNUC__) && !defined(__MINGW32__)
 #define IID_IXmlReader   __uuidof(IXmlReader)
 #define IID_IXmlWriter   __uuidof(IXmlWriter)
 #define IID_IXmlResolver __uuidof(IXmlResolver)

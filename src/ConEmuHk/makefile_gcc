@@ -77,7 +77,7 @@ endif
 RCWIDE = -D UNICODE -D _UNICODE $(BITDEF)
 CXXWIDE = -D UNICODE -D _UNICODE  $(BITDEF)
 CCWIDE = -D UNICODE -D _UNICODE $(BITDEF)
-WINVER = -D _WIN32_WINNT=0x0500 -D WINVER=0x0500
+WINVER = -D _WIN32_WINNT=0x0601 -D WINVER=0x0601
 
 TMPDIR = ../../gcc
 OBJDIR = $(TMPDIR)/conemuhk$(DIRBIT)
@@ -113,7 +113,7 @@ AR = ar
 RANLIB = ranlib
 CXXFLAGS = $(ENCFLAGS) -I $(COMMON) -I $(COMINC) -Wall -Os -funsigned-char -fomit-frame-pointer -fstrict-aliasing -fno-rtti -fno-exceptions $(CXXWIDE) $(USERCPP) $(WINVER)
 CCFLAGS = -I $(COMMON) -I $(COMINC) -Wall -Os -funsigned-char -fomit-frame-pointer -fstrict-aliasing -fno-exceptions $(CCWIDE) $(USERCPP) $(WINVER)
-LNKFLAGS = -mdll $(BASEADDRESS) -s -lgcc $(USERLIBSFIRST) $(COMMONLIB) -luser32 -lkernel32 -ladvapi32 -lshell32 $(USERLIBS)
+LNKFLAGS = -mdll $(BASEADDRESS) -s -lgcc $(USERLIBSFIRST) $(COMMONLIB) -luser32 -lkernel32 -ladvapi32 -lshell32 -luuid -lgdi32 $(USERLIBS)
 RCFLAGS = -I $(COMINC) $(RCWIDE) $(USERRC)
 
 OBJS = $(patsubst %.cpp,$(OBJDIR)/%.o,$(filter %.cpp,$(SRCS))) $(patsubst %.c,$(OBJDIR)/%.o,$(filter %.c,$(SRCS))) $(RES)

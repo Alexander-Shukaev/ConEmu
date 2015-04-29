@@ -49,7 +49,7 @@ struct ConfirmCloseParam
 };
 int ConfirmCloseConsoles(const ConfirmCloseParam& Parm);
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__MINGW32__)
 
 enum _TASKDIALOG_FLAGS
 {
