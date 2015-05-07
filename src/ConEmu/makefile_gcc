@@ -168,7 +168,7 @@ EXT = exe
 EXENAME = $(NAME)$(BITNAME).$(EXT)
 EXEFULLNAME = $(EXEDIR)/$(EXENAME)
 #DEF = export.gcc.def
-RC_NAME = ConEmu.rc
+RC_NAME = $(NAME).rc
 RES = $(OBJDIR)/$(NAME).res.o
 
 NOSTART = -nostartfiles
@@ -195,7 +195,7 @@ M4 = tools/m4 -P -DFARBIT=$(DIRBIT)
 GAWK = tools/gawk
 MV = mv -f
 MKDIR = mkdir -p
-WINDRES = windres
+WINDRES = windres -D__FARBIT__=$(DIRBIT)
 AR = ar
 RANLIB = ranlib
 CXXFLAGS = $(ENCFLAGS) $(DEBUGFLAGS) -mwindows -fexceptions -I $(COMMON) -I $(COMINC) -Wall -Os -funsigned-char -fomit-frame-pointer -fstrict-aliasing -fno-rtti $(CXXWIDE) $(USERCPP) 

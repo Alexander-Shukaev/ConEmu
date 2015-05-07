@@ -36,7 +36,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <exdisp.h>
 #pragma warning(default: 4091)
 #include <tlhelp32.h>
-#ifndef __GNUC__
+#if !defined(__GNUC__) || defined(__MINGW32__)
 #include <dbghelp.h>
 #include <shobjidl.h>
 #include <propkey.h>
@@ -625,7 +625,7 @@ int MyGetDlgItemText(HWND hDlg, WORD nID, wchar_t (&rszText)[size])
 	CEStr szText;
 	size_t cchMax = 0;
 	int nLen = MyGetDlgItemText(hDlg, nID, cchMax, szText.ms_Arg);
-	if (!pszText)
+	if (!rszText)
 		return false;
 	if (lstrcmp(rszText, szText.ms_Arg) == 0)
 		return false;

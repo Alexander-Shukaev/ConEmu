@@ -3105,6 +3105,8 @@ int CreateMapHeader()
 	//DWORD nHdrSize = ((LPBYTE)gpSrv->pConsoleDataCopy->Buf) - ((LPBYTE)gpSrv->pConsoleDataCopy);
 	//_ASSERTE(sizeof(CESERVER_REQ_CONINFO_DATA) == (sizeof(COORD)+sizeof(CHAR_INFO)));
 	int nMaxDataSize = nMaxCells * sizeof(CHAR_INFO); // + nHdrSize;
+	bool lbCreated, lbUseExisting = false;
+
 	gpSrv->pConsoleDataCopy = (CHAR_INFO*)calloc(nMaxDataSize,1);
 
 	if (!gpSrv->pConsoleDataCopy)
@@ -3145,8 +3147,6 @@ int CreateMapHeader()
 	gpSrv->pConsoleMap->InitName(CECONMAPNAME, (DWORD)ghConWnd); //-V205
 	gpSrv->pAppMap->InitName(CECONAPPMAPNAME, (DWORD)ghConWnd); //-V205
 
-
-	bool lbCreated, lbUseExisting = false;
 	if (gnRunMode == RM_SERVER)
 	{
 		lbCreated = (gpSrv->pConsoleMap->Create() != NULL)

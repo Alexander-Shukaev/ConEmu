@@ -10,13 +10,15 @@ SRCS = \
 		../common/MAssert.cpp        \
 		../common/MConHandle.cpp     \
 		../common/Memory.cpp         \
+		../common/Monitors.cpp       \
 		../common/MSectionSimple.cpp \
 		../common/MSection.cpp       \
 		../common/MSecurity.cpp      \
 		../common/MStrSafe.cpp       \
 		../common/RConStartArgs.cpp  \
-		../common/WConsole.cpp     \
-		../common/WObjects.cpp     \
+		../common/WConsole.cpp       \
+		../common/WObjects.cpp       \
+		../common/WUser.cpp          \
 		Ansi.cpp \
 		ConEmuHooks.cpp \
 		DefTermHk.cpp \
@@ -108,7 +110,7 @@ CP = cp -f
 M4 = m4 -P
 MV = mv -f
 MKDIR = mkdir -p
-WINDRES = windres
+WINDRES = windres -D__FARBIT__=$(DIRBIT)
 AR = ar
 RANLIB = ranlib
 CXXFLAGS = $(ENCFLAGS) -I $(COMMON) -I $(COMINC) -Wall -Os -funsigned-char -fomit-frame-pointer -fstrict-aliasing -fno-rtti -fno-exceptions $(CXXWIDE) $(USERCPP) $(WINVER)

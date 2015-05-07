@@ -418,6 +418,7 @@ bool IsNeedCmd(BOOL bRootCmd, LPCWSTR asCmdLine, CmdArg &szExe,
 	bool lbRc = false;
 	int iRc = 0;
 	BOOL lbFirstWasGot = FALSE;
+	wchar_t *pwszEndSpace = 0;
 	LPCWSTR pwszCopy;
 	int nLastChar;
 
@@ -683,7 +684,7 @@ bool IsNeedCmd(BOOL bRootCmd, LPCWSTR asCmdLine, CmdArg &szExe,
 	//pwszCopy = wcsrchr(szArg, L'\\'); if (!pwszCopy) pwszCopy = szArg; else pwszCopy ++;
 	pwszCopy = PointToName(szExe);
 	//2009-08-27
-	wchar_t *pwszEndSpace = szExe.ms_Arg + lstrlenW(szExe) - 1;
+	pwszEndSpace = szExe.ms_Arg + lstrlenW(szExe) - 1;
 
 	while ((*pwszEndSpace == L' ') && (pwszEndSpace > szExe))
 	{
